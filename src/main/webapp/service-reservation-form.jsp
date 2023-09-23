@@ -6,7 +6,15 @@
 <body>
 
   <h1>Vehicle Service Reservation</h1>
-  <form action="reservation.jsp" method="post">
+
+  <%-- Display the error message if it exists --%>
+  <% if (request.getAttribute("error") != null) { %>
+  <div class="error-message" style="color: red;">
+      <%= request.getAttribute("error") %><br><br>
+  </div>
+  <% } %>
+
+  <form action="reservation-servlet" method="post">
 
       <label for="name">Name<span style="color: red;" >*</span>:</label>
       <input type="text" name="name" id="name" required><br><br>
