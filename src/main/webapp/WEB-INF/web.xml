@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>ReservationServerlet</servlet-name>
-        <servlet-class>com.vehicleservice.vehicleservicereservationapp.ReservationServerlet</servlet-class>
+        <servlet-class>com.vehicleservice.vehicleservicereservationapp.ReservationServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

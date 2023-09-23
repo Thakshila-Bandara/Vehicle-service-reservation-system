@@ -16,12 +16,10 @@
 
   <form action="reservation-servlet" method="post">
 
-      <label for="name">Name<span style="color: red;" >*</span>:</label>
-      <input type="text" name="name" id="name" required><br><br>
-      <label for="email">Email<span style="color: red;" >*</span>:</label>
-      <input type="email" name="email" id="email" required><br><br>
-      <label for="contact">Contact no<span style="color: red;" >*</span>:</label>
-      <input type="text" name="contact" id="contact" required><br><br>
+      <label for="custname">Customer Name<span style="color: red;" >*</span>:</label>
+      <input type="text" name="custname" id="custname" required><br><br>
+      <label for="date">Contact no<span style="color: red;" >*</span>:</label>
+      <input type="date" name="date" id="date" required min="2023-09-01" max="2023-12-31"><br><br>
       <label for="time">Preferred time<span style="color: red;" >*</span>:</label>
       <select name="time" id="time" required>
           <option value="10.00a.m">10.00 A.M</option>
