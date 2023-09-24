@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,7 +42,17 @@ public class ReservationServlet extends HttpServlet {
                         e.printStackTrace();
                 }
 
+                Date selectedTime = null;
+                try {
+                        selectedTime = new SimpleDateFormat("HH:mm").parse(time);
+                } catch (ParseException e) {
+                        // Handle date parsing error
+                        e.printStackTrace();
+                }
+
                 Date minDate = new Date(); //current date
+                Time minTime = Time.valueOf("09:00:00"); //9am
+                Time maxTime = Time.valueOf("17:00:00"); //5pm
 
                 //Establish database connection
                 Connection connection = DBConnection.getConnection();
@@ -68,12 +79,17 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Date must be after today");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                }else if(!regno.matches("^(?>[a-zA-Z]{1,3}|(?!0*-)[0-9]{1,3})-[0-9]{4}(?<!0{4})") || regno.length() > 8 || regno.length() < 7) {
+                } else if (selectedTime.before(minTime) || selectedTime.after(maxTime)) {
+
+                        request.setAttribute("error", "Time must be between 9am and 5pm");
+                        request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
+                        return;
+                } else if(!regno.matches("^(?>[a-zA-Z]{1,3}|(?!0*-)[0-9]{1,3})-[0-9]{4}(?<!0{4})") || regno.length() > 8 || regno.length() < 7) {
 
                         request.setAttribute("error", "Invalid registration number");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                }else if (!mileage.matches("^\\d+,?(\\d|X|k)+\\smiles$") || mileage.length() > 10) {
+                }else if (!mileage.matches("^[0-9]+$") || mileage.length() > 10) {
 
                         request.setAttribute("error", "Invalid mileage");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
@@ -85,15 +101,16 @@ public class ReservationServlet extends HttpServlet {
                         return;
                 }else{
 
+
                         if(connection != null){
 
                                 try {
-                                        String sql = "INSERT INTO reservation (date, time, location, vehicle_no, " +
+                                        String sql = "INSERT INTO vehicle_service (date, time, location, vehicle_no, " +
                                                 "mileage, message, username) " +
                                                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
                                         PreparedStatement preparedStatement = connection.prepareStatement(sql);
                                         preparedStatement.setString(1, date);
-                                        preparedStatement.setString(2, time);
+                                        preparedStatement.setTime(2, new Time(selectedTime.getTime()));
                                         preparedStatement.setString(3, location);
                                         preparedStatement.setString(4, regno);
                                         preparedStatement.setString(5, mileage);
@@ -104,11 +121,15 @@ public class ReservationServlet extends HttpServlet {
                                         int rowsAffected = preparedStatement.executeUpdate();
 
                                         if (rowsAffected > 0) {
-                                                response.sendRedirect("index.jsp");
+
+                                                request.setAttribute("success", "Data successfully inserted into the database");
+                                                request.getRequestDispatcher("index.jsp").forward(request, response);
+
                                         } else {
 
                                                 request.setAttribute("error", "Failed to insert data into the database");
                                                 request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
+                                                return;
                                         }
                                     }catch (Exception e){
                                         e.printStackTrace();

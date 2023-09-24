@@ -2,12 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Vehicle Service</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
+<h1><%= "Vehicle Service Reservation" %></h1>
 <br/>
+
+<% if (request.getAttribute("success") != null) { %>
+<div class="success-message" style="color: green;">
+    <%= request.getAttribute("success") %><br><br>
+</div>
+<% } %>
+
 <a href="service-reservation-form.jsp">Reserve a service</a>
 </body>
 </html>
