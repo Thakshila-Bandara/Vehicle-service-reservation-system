@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -122,6 +123,7 @@ public class ReservationServlet extends HttpServlet {
 
                                         if (rowsAffected > 0) {
 
+                                                DBConnection.closeConnection();
                                                 request.setAttribute("success", "Data successfully inserted into the database");
                                                 request.getRequestDispatcher("index.jsp").forward(request, response);
 
