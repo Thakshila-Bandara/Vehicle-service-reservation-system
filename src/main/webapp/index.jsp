@@ -15,5 +15,6 @@
 <% } %>
 
 <a href="service-reservation-form.jsp">Reserve a service</a>
+<a href="reservation-details.jsp">View Reservation Details</a>
 </body>
 </html>
