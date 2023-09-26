@@ -41,8 +41,27 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+        <dependency>
+            <groupId>io.asgardeo.tomcat.saml.agent</groupId>
+            <artifactId>io.asgardeo.tomcat.saml.agent</artifactId>
+            <version>0.1.31</version>
+        </dependency>
 
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>wso2.releases</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
+
 
     <build>
         <plugins>
