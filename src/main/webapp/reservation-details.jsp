@@ -66,6 +66,6 @@
             out.println("Connection failed");
         }
     %>
-<br><br> <a href="index.jsp">Back to home</a>
+<br><br> <a href="home.jsp">Back to home</a>
 </body>
 </html>

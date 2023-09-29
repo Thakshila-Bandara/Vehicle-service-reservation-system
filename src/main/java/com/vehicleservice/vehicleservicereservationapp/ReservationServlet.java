@@ -125,7 +125,7 @@ public class ReservationServlet extends HttpServlet {
 
                                                 DBConnection.closeConnection();
                                                 request.setAttribute("success", "Data successfully inserted into the database");
-                                                request.getRequestDispatcher("index.jsp").forward(request, response);
+                                                request.getRequestDispatcher("home.jsp").forward(request, response);
 
                                         } else {
 
