@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Vehicle Service Reservation</title>
@@ -6,6 +7,12 @@
 <body>
 
   <h1>Vehicle Service Reservation</h1>
+
+  <%
+      String userName = (String) session.getAttribute("userName");
+      out.println("Hello " + userName + "!");
+      out.println("Make a Reservation. <br><br>");
+  %>
 
   <%-- Display the error message if it exists --%>
   <% if (request.getAttribute("error") != null) { %>
@@ -16,22 +23,10 @@
 
   <form action="reservation-servlet" method="post">
 
-      <label for="custname">Customer Name<span style="color: red;" >*</span>:</label>
-      <input type="text" name="custname" id="custname" required><br><br>
-      <label for="date">Contact no<span style="color: red;" >*</span>:</label>
+      <label for="date">Date<span style="color: red;" >*</span>:</label>
       <input type="date" name="date" id="date" required min="2023-09-01" max="2023-12-31"><br><br>
       <label for="time">Preferred time<span style="color: red;" >*</span>:</label>
       <input type="time" name="time" id="time" min="9.00" max="4.00" required><br><br>
-<%--      <select name="time" id="time" required>--%>
-<%--          <option value="" disabled selected>Select a time</option>--%>
-<%--          <option value="10.00a.m">10.00 A.M</option>--%>
-<%--          <option value="11.00a.m">11.00 A.M</option>--%>
-<%--          <option value="12.00p.m">12.00 P.M</option>--%>
-<%--          <option value="1.00p.m">1.00 P.M</option>--%>
-<%--          <option value="2.00p.m">2.00 P.M</option>--%>
-<%--          <option value="3.00p.m">3.00 P.M</option>--%>
-<%--          <option value="4.00p.m">4.00 P.M</option>--%>
-<%--      </select><br><br>--%>
       <label for="location">Preferred location<span style="color: red;" >*</span>:</label>
       <select name="location" id="location" required>
           <option value="" disabled selected>Select a location</option>
@@ -50,6 +45,8 @@
       <textarea name="message" id="message" rows="5" cols="30"></textarea><br><br>
       <input type="submit" value="Reserve">
 
-  </form>
+  </form> <br><br>
+<a href="home.jsp">Back to home</a> <br><br>
+  <a href="logout?SAML2.HTTPBinding=HTTP-POST">Logout</a>
 </body>
 </html>

@@ -14,11 +14,14 @@
     <%
         //Establish database connection
         Connection connection = DBConnection.getConnection();
+        String userName = (String) session.getAttribute("userName");
 
         if (connection != null) {
             try {
-                String sql = "SELECT booking_id,date,time,location,vehicle_no,mileage,username FROM vehicle_service";
+                String sql = "SELECT booking_id,date,time,location,vehicle_no,mileage,username FROM vehicle_service " +
+                        "WHERE username = ?";
                 PreparedStatement statement = connection.prepareStatement(sql);
+                statement.setString(1,userName);
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next() == false){
@@ -57,7 +60,7 @@
 
         <%
                 }
-            connection.close();
+
             }catch (Exception e){
                 e.printStackTrace();
             }

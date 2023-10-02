@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,13 +23,16 @@ public class ReservationServlet extends HttpServlet {
         //retrieve data from the form
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                String name = request.getParameter("custname");
+
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
                 String location = request.getParameter("location");
                 String regno = request.getParameter("regno");
                 String mileage = request.getParameter("mileage");
                 String message = request.getParameter("message");
+
+                HttpSession session = request.getSession();
+                String userName = (String) session.getAttribute("userName");
 
                 int nameMinlength = 3;
                 int nameMaxlength = 50;
@@ -60,17 +64,17 @@ public class ReservationServlet extends HttpServlet {
 
 
                 //perform server-side validation
-                if(name.isEmpty() || date.isEmpty() || time.isEmpty() || location.isEmpty() || regno.isEmpty() || mileage.isEmpty()) {
+                if(userName.isEmpty() || date.isEmpty() || time.isEmpty() || location.isEmpty() || regno.isEmpty() || mileage.isEmpty()) {
 
                         request.setAttribute("error", "Please fill in all required fields");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (!name.matches("^^[a-zA-Z ]+$")) {
+                } else if (!userName.matches("^^[a-zA-Z ]+$")) {
 
                         request.setAttribute("error", "Name should only contain letters and spaces");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (name.length() < nameMinlength || name.length() > nameMaxlength) {
+                } else if (userName.length() < nameMinlength || userName.length() > nameMaxlength) {
 
                         request.setAttribute("error", "Name must between 3 and 50 characters");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
@@ -116,14 +120,14 @@ public class ReservationServlet extends HttpServlet {
                                         preparedStatement.setString(4, regno);
                                         preparedStatement.setString(5, mileage);
                                         preparedStatement.setString(6, message);
-                                        preparedStatement.setString(7, name);
+                                        preparedStatement.setString(7, userName);
 
                                         //Execute the query
                                         int rowsAffected = preparedStatement.executeUpdate();
 
                                         if (rowsAffected > 0) {
 
-                                                DBConnection.closeConnection();
+
                                                 request.setAttribute("success", "Data successfully inserted into the database");
                                                 request.getRequestDispatcher("home.jsp").forward(request, response);
 
