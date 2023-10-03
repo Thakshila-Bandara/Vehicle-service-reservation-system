@@ -39,10 +39,31 @@
     //Authenticating user's last name
     String lastName = saml2SSOAttributes.get("http://wso2.org/claims/lastname");
 
+    //Authenticating user's email
+    String email = saml2SSOAttributes.get("http://wso2.org/claims/emailaddress");
+
+    //Authenticating user's mobile number
+    String mobile = saml2SSOAttributes.get("http://wso2.org/claims/mobile");
+
+    //Authenticating user's country
+    String country = saml2SSOAttributes.get("http://wso2.org/claims/country");
+
+    //Authenticating user's token
+    String token = saml2SSOAttributes.get("isk");
+
     //creating a session
     session.setAttribute("userName", username);
 
-    out.println("Welcome " + firstName + " " + lastName + "!");
+    out.println("Welcome " + firstName + " " + lastName + "!<br><br>");
+    out.println("Username: " + username + "<br><br>");
+    out.println("Email: " + email + "<br><br>");
+    out.println("Mobile: " + mobile + "<br><br>");
+    out.println("Country: " + country + "<br><br>");
+
+
+//    for (Map.Entry<String, String> entry : saml2SSOAttributes.entrySet()) {
+//        out.println(entry.getKey() + " : " + entry.getValue());
+//    }
 %>
 
 <br><br>
