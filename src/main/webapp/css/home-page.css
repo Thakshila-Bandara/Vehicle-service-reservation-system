@@ -1,0 +1,44 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+    padding: 1%;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 13px;
+    background: #6bb1f1;
+    gap: 1%;
+}
+
+a:hover{
+    background: #016ABC;
+}
+
+body{
+    background: #062b3a;
+    color: aliceblue;
+
+}
+
+h1{
+
+        font-size: 50px;
+        color: aliceblue;
+}
+
+.body__container{
+    display: block ;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+
+}
+

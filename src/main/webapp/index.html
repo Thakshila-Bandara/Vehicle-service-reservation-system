@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in</title>
+    <link href="css/index-page.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<h1>Vehicle Service Reservation</h1>
-<h3>Please Log in to continue...</h3>
+<div class="body__container">
+<h1>Vehicle Service Reservation</h1> <br>
+<h3>Please Log in to continue...</h3> <br>
 <form action="samlsso?SAML2.HTTPBinding=HTTP-POST" method="post">
-    <div class="element-padding">
-        <input style="height: 30px; width: 60px" type="submit" value="log in">
+    <div class="login__container">
+        <input style="height: 30px; width: 60px" type="submit" value="Log in" id="submit__btn">
     </div>
 </form>
-
+</div>
 
 </body>
 </html>

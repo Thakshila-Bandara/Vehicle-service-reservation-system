@@ -1,0 +1,66 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+        background: #062b3a;
+}
+
+.body__container{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+
+h1{
+
+    font-size: 50px;
+}
+
+h3{
+
+        font-size: 30px;
+}
+
+h1, h3{
+
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    color: #fff;
+}
+
+.login__container{
+
+    display: flex;
+    position: absolute;
+    left: 43%;
+    width: 20em;
+    height: 2em;
+}
+
+#submit__btn{
+
+    background: #6ab3f1;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    text-shadow: none;
+
+
+}
+
+#submit__btn:hover{
+
+    background: #016ABC;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    text-shadow: none;
+
+}
