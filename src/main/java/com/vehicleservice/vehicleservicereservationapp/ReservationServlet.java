@@ -69,9 +69,9 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Please fill in all required fields");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (!userName.matches("^^[a-zA-Z ]+$")) {
+                } else if (!userName.matches("^[a-zA-Z0-9]*$")) {
 
-                        request.setAttribute("error", "Name should only contain letters and spaces");
+                        request.setAttribute("error", "Name should only contain letters and numbers");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
                 } else if (userName.length() < nameMinlength || userName.length() > nameMaxlength) {
@@ -99,7 +99,7 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Invalid mileage");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (!message.matches("^[a-zA-Z0-9\\\\s.,!?()-]*$") || message.length() > 250) {
+                } else if (!message.matches("^[a-zA-Z0-9 \\\\s.,!?()-]*$") || message.length() > 250) {
 
                         request.setAttribute("error", "Invalid message");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);

@@ -68,7 +68,8 @@
 
 <br><br>
 <a href="service-reservation-form.jsp">Reserve a service</a>
-<a href="reservation-details.jsp">View Reservation Details</a> <br><br>
+<a href="reservation-details.jsp">My Reservation Details</a>
+<a href="delete-upcoming-reservations.jsp">Delete upcoming reservations</a> <br><br>
 <a href="logout?SAML2.HTTPBinding=HTTP-POST">Logout</a>
 </body>
 </html>

@@ -33,6 +33,16 @@
         <url-pattern>/reservation-servlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DeleteReservationServlet</servlet-name>
+        <servlet-class>com.vehicleservice.vehicleservicereservationapp.DeleteReservationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteReservationServlet</servlet-name>
+        <url-pattern>/delete-reservation-servlet</url-pattern>
+    </servlet-mapping>
+
         <display-name>io.asgardeo.tomcat.saml.agent.sample</display-name>
 
         <filter>

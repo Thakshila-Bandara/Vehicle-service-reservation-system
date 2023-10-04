@@ -69,6 +69,7 @@
             out.println("Connection failed");
         }
     %>
-<br><br> <a href="home.jsp">Back to home</a>
+<br><br> <a href="home.jsp">Back to home</a><br><br>
+    <a href="logout?SAML2.HTTPBinding=HTTP-POST">Logout</a>
 </body>
 </html>
