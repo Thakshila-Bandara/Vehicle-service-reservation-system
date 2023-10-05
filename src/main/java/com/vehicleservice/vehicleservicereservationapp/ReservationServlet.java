@@ -86,8 +86,9 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Date must be after today");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (!time.equals("10:00:00")   && !time.equals("11:00:00") && time.equals("12:00:00")) {
-                        System.out.println(time.equals("11:00:00"));
+                } else if (!time.equals("10:00:00")   && !time.equals("11:00:00") && !time.equals("12:00:00")) {
+                        System.out.println(time);
+                        System.out.println(time.equals("12:00:00"));
                         request.setAttribute("error", "Invalid Time");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;

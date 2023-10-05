@@ -1,0 +1,120 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+
+    background-color: #062b3a;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+    color: aliceblue;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #045b69;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #b9b9b9;
+    border-radius: 5px;
+    font-size: 16px;
+    background: antiquewhite;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    padding-right: 30px;
+    position: relative;
+}
+
+select::after {
+    content: "\25BC"; /* Unicode character for a down arrow (▼) */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the arrow's position as needed */
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333; /* Color of the arrow */
+    font-size: 16px; /* Size of the arrow */
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    padding: .5%;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 13px;
+    background: #6bb1f1;
+    margin-right: 1%;
+}
+
+a:hover {
+    background: #016ABC;
+}
+
+.body__container{
+     /* Make the container only as wide as its content */
+    background-color: #062b3a;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 20px auto; /* Center the container horizontally */
+}
+
+.body__container__a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+

@@ -3,9 +3,10 @@
 <html>
 <head>
     <title>Vehicle Service Reservation</title>
+    <link rel="stylesheet" href="css/service-reservation-form.css" type="text/css">
 </head>
 <body>
-
+<div class="body__container">
   <h1>Vehicle Service Reservation</h1>
 
   <%
@@ -20,7 +21,7 @@
       <%= request.getAttribute("error") %><br><br>
   </div>
   <% } %>
-
+</div>
   <form action="reservation-servlet" method="post">
 
       <label for="date">Date<span style="color: red;" >*</span>:</label>
@@ -51,7 +52,9 @@
       <input type="submit" value="Reserve">
 
   </form> <br><br>
+<div class="body__container__a" style="display: ">
 <a href="home.jsp">Back to home</a> <br><br>
   <a href="logout?SAML2.HTTPBinding=HTTP-POST">Logout</a>
+</div>
 </body>
 </html>
