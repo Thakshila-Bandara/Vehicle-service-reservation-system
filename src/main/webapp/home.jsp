@@ -79,9 +79,6 @@
     <a href="service-reservation-form.jsp">Reserve a service</a>
     <a href="reservation-details.jsp">My Reservation Details</a>
     <a href="delete-upcoming-reservations.jsp">Delete upcoming reservations</a> <br><br><br>
-<%--    <form action="db-connection-close-servlet" method="post">--%>
-<%--        <input type="submit" value="Logout">--%>
-<%--    </form>--%>
     <a href="logout?SAML2.HTTPBinding=HTTP-POST">Logout</a>
 </div>
 </body>

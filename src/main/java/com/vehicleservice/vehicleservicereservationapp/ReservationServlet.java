@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,19 +46,9 @@ public class ReservationServlet extends HttpServlet {
                         e.printStackTrace();
                 }
 
-//                Date selectedTime = null;
-//                try {
-//                        selectedTime = new SimpleDateFormat("HH:mm").parse(time);
-//                        System.out.println(time);
-//                } catch (ParseException e) {
-//                        // Handle date parsing error
-//                        e.printStackTrace();
-//                }
-//
+
+
                 Date minDate = new Date(); //current date
-//                Time time1 = Time.valueOf("10:00:00"); //10am
-//                Time time2 = Time.valueOf("11:00:00"); //11am
-//                Time time3 = Time.valueOf("12:00:00"); //12pm
 
                 //Establish database connection
                 Connection connection = DBConnection.getConnection();
@@ -87,8 +76,7 @@ public class ReservationServlet extends HttpServlet {
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
                 } else if (!time.equals("10:00:00")   && !time.equals("11:00:00") && !time.equals("12:00:00")) {
-                        System.out.println(time);
-                        System.out.println(time.equals("12:00:00"));
+
                         request.setAttribute("error", "Invalid Time");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;

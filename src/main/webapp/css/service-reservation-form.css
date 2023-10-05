@@ -49,6 +49,11 @@ textarea {
     background: lightcyan;
 }
 
+textarea{
+
+    resize: none;
+}
+
 select {
     appearance: none;
     -webkit-appearance: none;
