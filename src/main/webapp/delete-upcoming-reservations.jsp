@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Delete Upcoming Reservations</title>
+    <link rel="stylesheet" href="css/delete-reservations.css" type="text/css">
 </head>
 <body>
 

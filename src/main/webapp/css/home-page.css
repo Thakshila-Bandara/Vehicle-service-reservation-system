@@ -24,6 +24,7 @@ a:hover{
 body{
     background: #062b3a;
     color: aliceblue;
+    text-align: center;
 
 }
 
@@ -40,5 +41,9 @@ h1{
     left: 50%;
     top: 50%;
 
+}
+
+.success-message{
+    font-weight: bold;
 }
 

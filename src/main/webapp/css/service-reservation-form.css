@@ -18,6 +18,7 @@ body {
 h1 {
     text-align: center;
     color: aliceblue;
+    margin-bottom: 1%;
 }
 
 form {
@@ -45,7 +46,7 @@ textarea {
     border: 1px solid #b9b9b9;
     border-radius: 5px;
     font-size: 16px;
-    background: antiquewhite;
+    background: lightcyan;
 }
 
 select {
@@ -83,7 +84,6 @@ input[type="submit"]:hover {
 }
 
 .error-message {
-    color: red;
     font-weight: bold;
 }
 
@@ -103,7 +103,7 @@ a:hover {
 }
 
 .body__container{
-     /* Make the container only as wide as its content */
+
     background-color: #062b3a;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
