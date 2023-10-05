@@ -47,17 +47,19 @@ public class ReservationServlet extends HttpServlet {
                         e.printStackTrace();
                 }
 
-                Date selectedTime = null;
-                try {
-                        selectedTime = new SimpleDateFormat("HH:mm").parse(time);
-                } catch (ParseException e) {
-                        // Handle date parsing error
-                        e.printStackTrace();
-                }
-
+//                Date selectedTime = null;
+//                try {
+//                        selectedTime = new SimpleDateFormat("HH:mm").parse(time);
+//                        System.out.println(time);
+//                } catch (ParseException e) {
+//                        // Handle date parsing error
+//                        e.printStackTrace();
+//                }
+//
                 Date minDate = new Date(); //current date
-                Time minTime = Time.valueOf("09:00:00"); //9am
-                Time maxTime = Time.valueOf("17:00:00"); //5pm
+//                Time time1 = Time.valueOf("10:00:00"); //10am
+//                Time time2 = Time.valueOf("11:00:00"); //11am
+//                Time time3 = Time.valueOf("12:00:00"); //12pm
 
                 //Establish database connection
                 Connection connection = DBConnection.getConnection();
@@ -84,9 +86,9 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Date must be after today");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (selectedTime.before(minTime) || selectedTime.after(maxTime)) {
-
-                        request.setAttribute("error", "Time must be between 9am and 5pm");
+                } else if (!time.equals("10:00:00")   && !time.equals("11:00:00") && time.equals("12:00:00")) {
+                        System.out.println(time.equals("11:00:00"));
+                        request.setAttribute("error", "Invalid Time");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
                 } else if(!regno.matches("^(?>[a-zA-Z]{1,3}|(?!0*-)[0-9]{1,3})-[0-9]{4}(?<!0{4})") || regno.length() > 8 || regno.length() < 7) {
@@ -115,7 +117,7 @@ public class ReservationServlet extends HttpServlet {
                                                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
                                         PreparedStatement preparedStatement = connection.prepareStatement(sql);
                                         preparedStatement.setString(1, date);
-                                        preparedStatement.setTime(2, new Time(selectedTime.getTime()));
+                                        preparedStatement.setTime(2, Time.valueOf(time));
                                         preparedStatement.setString(3, location);
                                         preparedStatement.setString(4, regno);
                                         preparedStatement.setString(5, mileage);

@@ -24,6 +24,7 @@ public class DeleteReservationServlet extends HttpServlet {
         String userName = (String) session.getAttribute("userName");
 
         //delete the record from the database
+
         Connection connection = DBConnection.getConnection();
 
         if (userName != null && recordId != null && connection != null) {

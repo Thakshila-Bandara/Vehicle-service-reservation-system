@@ -26,7 +26,12 @@
       <label for="date">Date<span style="color: red;" >*</span>:</label>
       <input type="date" name="date" id="date" required min="2023-09-01" max="2023-12-31"><br><br>
       <label for="time">Preferred time<span style="color: red;" >*</span>:</label>
-      <input type="time" name="time" id="time" min="9.00" max="4.00" required><br><br>
+      <select name="time" id="time" required>
+          <option value="" disabled selected>Select a time</option>
+          <option value="10:00:00">10 A.M</option>
+          <option value="11:00:00">11 A.M</option>
+          <option value="12:00:00">12 P.M</option>
+      </select><br><br>
       <label for="location">Preferred location<span style="color: red;" >*</span>:</label>
       <select name="location" id="location" required>
           <option value="" disabled selected>Select a location</option>

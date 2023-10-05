@@ -32,7 +32,7 @@
     if(userName != null && connection != null){
 
         try{
-            String sql = "SELECT * FROM vehicle_service WHERE username = ? AND date >= CURDATE()";
+            String sql = "SELECT * FROM vehicle_service WHERE username = ? AND date > CURDATE()";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, userName);
             ResultSet resultSet = statement.executeQuery();
