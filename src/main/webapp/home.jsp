@@ -26,14 +26,14 @@
         // SAML response
         LoggedInSessionBean.SAML2SSO samlResponse = sessionBean.getSAML2SSO();
 
-        // Autheticated username
+        // Autheticated ownername
         String subjectId = samlResponse.getSubjectId();
 
         // Authenticated user's attributes
         Map<String, String> saml2SSOAttributes = samlResponse.getSubjectAttributes();
 
-        // Authenticated username
-        String username = saml2SSOAttributes.get("http://wso2.org/claims/username");
+        // Authenticated ownername
+        String ownername = saml2SSOAttributes.get("http://wso2.org/claims/username");
 
         //Authenticating user's first name
         String firstName = saml2SSOAttributes.get("http://wso2.org/claims/givenname");
@@ -62,10 +62,10 @@
         } else{
 
             //creating a session
-            session.setAttribute("userName", username);
+            session.setAttribute("userName", ownername);
 
             out.println("Welcome " + firstName + " " + lastName + "!<br><br>");
-            out.println("Username: " + username + "<br><br>");
+            out.println("Username: " + ownername + "<br><br>");
             out.println("Email: " + email + "<br><br>");
             out.println("Mobile: " + mobile + "<br><br>");
             out.println("Country: " + country + "<br><br>");
