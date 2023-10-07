@@ -2,6 +2,8 @@
 <%@ page import="com.vehicleservice.vehicleservicereservationapp.db.DBConnection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="org.owasp.html.HtmlPolicyBuilder" %>
+<%@ page import="org.owasp.html.PolicyFactory" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,6 +31,14 @@
 <%
     Connection connection = DBConnection.getConnection();
     String userName = (String) session.getAttribute("userName");
+    if(userName != null && userName.length()>0){
+
+        //Escape special characters
+        userName = userName.replaceAll("'", "''");
+    }else{
+        response.sendRedirect("index.html");
+    }
+    PolicyFactory sanitizer = new HtmlPolicyBuilder().toFactory();
 
     if(userName != null && connection != null){
 
@@ -58,16 +68,16 @@
                         <%
                             do{%>
                         <tr>
-                            <td><%=resultSet.getString(8)%></td>
-                            <td><%=resultSet.getString(1)%></td>
-                            <td><%=resultSet.getString(2)%></td>
-                            <td><%=resultSet.getString(3)%></td>
-                            <td><%=resultSet.getString(4)%></td>
-                            <td><%=resultSet.getString(5)%></td>
-                            <td><%=resultSet.getString(6)%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(8))%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(1))%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(2))%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(3))%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(4))%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(5))%></td>
+                            <td><%=sanitizer.sanitize(resultSet.getString(6))%></td>
                             <td>
                                 <form action="delete-reservation-servlet" method="post">
-                                    <input type="hidden" name="bookingId" value="<%=resultSet.getString(1)%>">
+                                    <input type="hidden" name="bookingId" value="<%=sanitizer.sanitize(resultSet.getString(1))%>">
                                     <input type="submit" value="Delete">
                                 </form>
                             </td>

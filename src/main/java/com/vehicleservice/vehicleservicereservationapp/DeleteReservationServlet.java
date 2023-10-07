@@ -1,6 +1,8 @@
 package com.vehicleservice.vehicleservicereservationapp;
 
 import com.vehicleservice.vehicleservicereservationapp.db.DBConnection;
+import org.owasp.html.HtmlPolicyBuilder;
+import org.owasp.html.PolicyFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,12 +18,22 @@ import java.sql.PreparedStatement;
 public class DeleteReservationServlet extends HttpServlet {
 
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String recordId = request.getParameter("bookingId");
+        PolicyFactory sanitizer = new HtmlPolicyBuilder().toFactory();
+        String recordId = sanitizer.sanitize(request.getParameter("bookingId"));
         HttpSession session = request.getSession();
         String userName = (String) session.getAttribute("userName");
+
+        if(userName != null && userName.length()>0){
+
+            //Escape special characters
+            userName = userName.replaceAll("'", "''");
+        }else{
+            response.sendRedirect("index.html");
+        }
 
         //delete the record from the database
 

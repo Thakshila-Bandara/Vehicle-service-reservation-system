@@ -33,6 +33,14 @@ public class ReservationServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 String userName = (String) session.getAttribute("userName");
 
+                if(userName != null && userName.length()>0){
+
+                        //Escape special characters
+                        userName = userName.replaceAll("'", "''");
+                }else{
+                        response.sendRedirect("index.html");
+                }
+
                 int nameMinlength = 3;
                 int nameMaxlength = 50;
 
@@ -47,7 +55,6 @@ public class ReservationServlet extends HttpServlet {
                 }
 
 
-
                 Date minDate = new Date(); //current date
 
                 //Establish database connection
@@ -55,7 +62,7 @@ public class ReservationServlet extends HttpServlet {
 
 
                 //perform server-side validation
-                if(userName.isEmpty() || date.isEmpty() || time.isEmpty() || location.isEmpty() || regno.isEmpty() || mileage.isEmpty()) {
+                if (userName.isEmpty() || date.isEmpty() || time.isEmpty() || location.isEmpty() || regno.isEmpty() || mileage.isEmpty()) {
 
                         request.setAttribute("error", "Please fill in all required fields");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
@@ -75,17 +82,17 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Date must be after today");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if (!time.equals("10:00:00")   && !time.equals("11:00:00") && !time.equals("12:00:00")) {
+                } else if (!time.equals("10:00:00") && !time.equals("11:00:00") && !time.equals("12:00:00")) {
 
                         request.setAttribute("error", "Invalid Time");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                } else if(!regno.matches("^(?>[a-zA-Z]{1,3}|(?!0*-)[0-9]{1,3})-[0-9]{4}(?<!0{4})") || regno.length() > 8 || regno.length() < 7) {
+                } else if (!regno.matches("^(?>[a-zA-Z]{1,3}|(?!0*-)[0-9]{1,3})-[0-9]{4}(?<!0{4})") || regno.length() > 8 || regno.length() < 7) {
 
                         request.setAttribute("error", "Invalid registration number");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                }else if (!mileage.matches("^[0-9]+$") || mileage.length() > 10) {
+                } else if (!mileage.matches("^[0-9]+$") || mileage.length() > 10) {
 
                         request.setAttribute("error", "Invalid mileage");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
@@ -95,10 +102,10 @@ public class ReservationServlet extends HttpServlet {
                         request.setAttribute("error", "Invalid message");
                         request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         return;
-                }else{
+                } else {
 
 
-                        if(connection != null){
+                        if (connection != null) {
 
                                 try {
                                         String sql = "INSERT INTO vehicle_service (date, time, location, vehicle_no, " +
@@ -128,10 +135,10 @@ public class ReservationServlet extends HttpServlet {
                                                 request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                                                 return;
                                         }
-                                    }catch (Exception e){
+                                } catch (Exception e) {
                                         e.printStackTrace();
-                                    }
-                        }else{
+                                }
+                        } else {
                                 request.setAttribute("error", "Failed to establish a database connection");
                                 request.getRequestDispatcher("service-reservation-form.jsp").forward(request, response);
                         }
@@ -140,10 +147,13 @@ public class ReservationServlet extends HttpServlet {
                 }
 
 
-
-
-
-
+                if (connection != null) {
+                        try {
+                                connection.close();
+                        } catch (Exception e) {
+                                e.printStackTrace();
+                        }
+                }
         }
 
 
