@@ -68,16 +68,16 @@
                         <%
                             do{%>
                         <tr>
-                            <td><%=sanitizer.sanitize(resultSet.getString(8))%></td>
-                            <td><%=sanitizer.sanitize(resultSet.getString(1))%></td>
-                            <td><%=sanitizer.sanitize(resultSet.getString(2))%></td>
-                            <td><%=sanitizer.sanitize(resultSet.getString(3))%></td>
-                            <td><%=sanitizer.sanitize(resultSet.getString(4))%></td>
-                            <td><%=sanitizer.sanitize(resultSet.getString(5))%></td>
-                            <td><%=sanitizer.sanitize(resultSet.getString(6))%></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(8))}"></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(1))}"></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(2))}"></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(3))}"></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(4))}"></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(5))}"></td>
+                            <td><c:out value="${sanitizer.sanitize(resultSet.getString(6))}"></td>
                             <td>
                                 <form action="delete-reservation-servlet" method="post">
-                                    <input type="hidden" name="bookingId" value="<%=sanitizer.sanitize(resultSet.getString(1))%>">
+                                    <input type="hidden" name="bookingId" value="<c:out value="${sanitizer.sanitize(resultSet.getString(1))}">">
                                     <input type="submit" value="Delete">
                                 </form>
                             </td>
