@@ -147,13 +147,6 @@ public class ReservationServlet extends HttpServlet {
                 }
 
 
-                if (connection != null) {
-                        try {
-                                connection.close();
-                        } catch (Exception e) {
-                                e.printStackTrace();
-                        }
-                }
         }
 
 

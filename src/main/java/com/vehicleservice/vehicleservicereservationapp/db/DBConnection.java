@@ -14,9 +14,9 @@ public class DBConnection {
         if(connection == null){
             try{
 
-                String dbUrl = "jdbc:mysql://51.132.137.223:3306/isec_assessment2";
-                String dbUser = "isec";
-                String dbPassword = "EUHHaYAmtzbv";
+                String dbUrl = "jdbc:mysql://localhost:3306/isec_assessment2";
+                String dbUser = "root";
+                String dbPassword = "";
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);

@@ -58,13 +58,13 @@
                     <%
                         do{%>
                             <tr>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(7))}"></td>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(1))}"></td>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(2))}"></td>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(3))}"></td>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(4))}"></td>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(5))}"></td>
-                                <td><c:out value="${sanitizer.sanitize(resultSet.getString(6))}"></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(7))%></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(1))%></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(2))%></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(3))%></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(4))%></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(5))%></td>
+                                <td><%=sanitizer.sanitize(resultSet.getString(6))%></td>
                             </tr><%
 
                         }while (resultSet.next());%>

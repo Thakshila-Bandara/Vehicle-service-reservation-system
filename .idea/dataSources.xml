@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://51.132.137.223:3306/isec_assessment2</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="isec_assessment2@localhost" uuid="bce66dba-294a-415f-b134-8cb1060d482c">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/isec_assessment2</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
