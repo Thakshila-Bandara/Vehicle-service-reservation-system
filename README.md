@@ -13,7 +13,7 @@ String dbPassword = <database password>;
 
 Then you need to format your reservation-app.properties file according to your WSO2 Asgardeo console's data. You can refer to my blog article to set up this properties file's credentials.
 
-Blog article link: 
+Blog article link: https://medium.com/@thakshiladb2000/revolutionizing-vehicle-service-reservations-a-guide-to-building-a-secure-web-application-d28b94e7fddf
 
 Also below I showed a sample code snippet for the properties file.
 
