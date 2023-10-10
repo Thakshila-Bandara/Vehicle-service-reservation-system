@@ -14,8 +14,8 @@ public class DBConnection {
         if(connection == null){
             try{
 
-                String dbUrl = "jdbc:mysql://localhost:3306/isec_assessment2";
-                String dbUser = "root";
+                String dbUrl = "jdbc:mysql://....";
+                String dbUser = "";
                 String dbPassword = "";
 
                 Class.forName("com.mysql.cj.jdbc.Driver");

@@ -56,7 +56,8 @@
                     </tr>
 
                     <%
-                        do{%>
+                        do{
+                    %>
                             <tr>
                                 <td><%=sanitizer.sanitize(resultSet.getString(7))%></td>
                                 <td><%=sanitizer.sanitize(resultSet.getString(1))%></td>

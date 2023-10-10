@@ -82,3 +82,6 @@ PrivateKeyAlias=wso2carbon
 PrivateKeyPassword=wso2carbon
 ```
 Remember to replace SAML2.AssertionConsumerURL, SAML2.SPEntityId, SAML2.IdPEntityId, SAML2.IdPURL, SkipURIs, and IndexPage according to your application credentials registered in the WSO2 Asgardeo console.
+Since this project created using Intellij IDEA you can run this project using IDE. Make sure to add Tomcat server to the IDE and add the project to the server. Then you can run the project using the IDE.
+
+
